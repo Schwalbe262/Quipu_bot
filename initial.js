@@ -43,7 +43,8 @@ Git = function() {
     //Constructor//
     function Git(){
     }
-    Git.ignore_list = getDB("ignore_update").split("\n") //update시 내려받지 않을 파일들의 이름 리스트
+    //Git.ignore_list = getDB("ignore_update").split("\n") //update시 내려받지 않을 파일들의 이름 리스트
+    Git.ignore_list = ;
 
     Git.getFileList = function(gitlink) {
         //정보 추출경로로 변형
