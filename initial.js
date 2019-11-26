@@ -8,6 +8,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 //================================================   eval    ==================================================================
 //=============================================================================================================================
 
+    if(msg=="test"){
+        replier.reply("test")
+    }
+
     // eval 코드
     String.prototype.encoding=function(){
         var res=this.toString();
@@ -43,7 +47,7 @@ Git = function() {
     //Constructor//
     function Git(){
     }
-    Git.ignore_list = getDB("ignore_update").split("\n") //update시 내려받지 않을 파일들의 이름 리스트
+    //Git.ignore_list = getDB("ignore_update").split("\n") //update시 내려받지 않을 파일들의 이름 리스트
 
     Git.getFileList = function(gitlink) {
         //정보 추출경로로 변형
@@ -167,7 +171,8 @@ timer = new (function(){ // 타이머
     }})();
 
 function saveFile(file, str) {
-    var filedir = new java.io.File("/sdcard/kbot/"+ file);
+    //var filedir = new java.io.File("/sdcard/kbot/"+ file);
+    var filedir = new java.io.File("/sdcard/ChatBot/BotData/시립"+ file);
     try {
         var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
         bw.write(str.toString());
