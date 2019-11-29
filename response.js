@@ -225,13 +225,13 @@ wake=(function() {
         on :function(){
             if(!wl.isHeld()){
                 wl.acquire();
-                Api.replyRoom("봇장난","cpu온");
+                Api.replyRoom("봇강의방","cpu온");
             }
         },
         off:function(){
             if(wl.isHeld()){
                 wl.release();
-                Api.replyRoom("봇장난","cpu오프");
+                Api.replyRoom("봇강의방","cpu오프");
             }
         },
         toString: function(){
