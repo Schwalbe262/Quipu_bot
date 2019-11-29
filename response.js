@@ -1,3 +1,7 @@
+var PM=android.os.PowerManager;
+var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
+var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
+
 //=============================================================================================================================
 //===========================================   response 함수    ==============================================================
 //=============================================================================================================================
@@ -20,6 +24,23 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             //replier.reply(eval(msg).toString().encoding())
             replier.reply(">" + new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
         }
+
+        if(msg=="고양이"){
+            replier.reply("야옹")
+        } // “고양이”라는 메시지를 받을 경우 “야옹” 출력
+        else if(msg=="강아지"){
+            replier.reply("멍멍")
+        }
+        else if(msg=="고양이"){
+            replier.reply("삐약삐약")
+        }
+        else{
+            replier.reply("꼬끼오")
+        }
+
+
+
+        function blankFunc(r){}
 
 
         //======================================== 공지방 티키타카 코드 시작 ==================================================
@@ -56,8 +77,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     }
     catch(e) {
-        //Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
-        replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
+        Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
+        //replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
     }
 
 
