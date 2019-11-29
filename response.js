@@ -7,7 +7,6 @@ var str_SG_2 = ""
 var str_GJ_1 = ""
 var str_GJ_2 = ""
 var flag_SG = ""
-"
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
