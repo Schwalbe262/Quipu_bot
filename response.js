@@ -2,6 +2,13 @@
 //===========================================   response 함수    ==============================================================
 //=============================================================================================================================
 
+var str_SG_1 = ""
+var str_SG_2 = ""
+var str_GJ_1 = ""
+var str_GJ_2 = ""
+var flag_SG = ""
+"
+
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
         // test 코드
@@ -9,12 +16,44 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             replier.reply("test11")
         }
 
-
         // eval 반응 코드
-        if (msg.indexOf(">") == 0) { // 해당 조건 만족시 eval 실행
+        if (msg.indexOf(">") == 0 && room=="봇강의방") { // 해당 조건 만족시 eval 실행
             //replier.reply(eval(msg).toString().encoding())
             replier.reply(">" + new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
         }
+
+
+        //======================================== 공지방 티키타카 코드 시작 ==================================================
+
+        if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
+            str_SG_1 = msg;
+            timer.start()
+            flag_SG = 1;
+        }
+        if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("보러가기 : ")>-1 && flag_SG==1 ){
+            str_SG_2 = msg;
+        }
+        if(room=="시립대공지확인방" && sender=="시립봇" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
+            str_GJ_1 = msg;
+        }
+        if(room=="시립대공지확인방" && sender=="시립봇" && msg.indexOf("보러가기 : ")>-1 ){
+            str_GJ_2 = msg;
+        }
+
+        if(flag_SG==1 && timer.end()>60*1000){
+            if(str_SG1==strSG2){ // 공지가 정상적으로 공지확인방에 출력 된 경우 아무 동작 하지 않음
+                flag_SG=0
+            }
+            else if(str_SG1!=strSG2){ // 공지가 정상적으로 출력 안된 경우
+                Api.replyRoom("시립대공지확인방",str_SG1)
+                Api.replyRoom("시립대공지확인방",str_SG2)
+                flag_SG=0
+            }
+        }
+
+        //======================================== 공지방 티키타카 코드 종료 ==================================================
+
+
 
     }
     catch(e) {
