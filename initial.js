@@ -139,6 +139,16 @@ Git = function() {
 
 }()
 
+Object.defineProperty(Array.prototype,"includes",	{
+    value:function(target){
+        return this.indexOf(target)!=-1
+    }
+});
+
+function flatten(arr) {
+    return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flatten(val)) : acc.concat(val), []);
+}
+
 function update() { // 깃헙 파일 -> 휴대폰 response.js 업데이트
     timer.start();
     Api.replyRoom("봇강의방","updating...");
