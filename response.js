@@ -6,14 +6,17 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     // test 코드
     if(msg=="test"){
-        replier.reply("test")
+        replier.reply("test고양이")
     }
 
+
     // eval 반응 코드
-    if(msg.indexOf(">")==0&&room=="봇강의방"){ // 해당 조건 만족시 eval 실행
+    if(msg.indexOf(">")==0){ // 해당 조건 만족시 eval 실행
         //replier.reply(eval(msg).toString().encoding())
         replier.reply(">"+new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
     }
+
+
 
 }
 
@@ -185,4 +188,3 @@ function saveFile(file, str) {
 //=============================================================================================================================
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
-
