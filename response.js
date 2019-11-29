@@ -178,6 +178,30 @@ function reload () { // 코드 리로드
     Api.replyRoom("봇강의방",msg);
 }
 
+wake=(function() {
+    var PM=android.os.PowerManager;
+    var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
+
+    var wl= pm.newWakeLock(PM.SCREEN_DIM_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
+    return {
+        on :function(){
+            if(!wl.isHeld()){
+                wl.acquire();
+                Api.replyRoom("봇장난","cpu온");
+            }
+        },
+        off:function(){
+            if(wl.isHeld()){
+                wl.release();
+                Api.replyRoom("봇장난","cpu오프");
+            }
+        },
+        toString: function(){
+            return wl.toString();
+        }
+    }
+})();
+
 timer = new (function(){ // 타이머
     var low=new Date();
     return {
