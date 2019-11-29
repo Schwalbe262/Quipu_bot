@@ -1,3 +1,8 @@
+var PM=android.os.PowerManager;
+var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
+var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
+
+
 //=============================================================================================================================
 //===========================================   response 함수    ==============================================================
 //=============================================================================================================================
@@ -18,8 +23,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     }
     catch(e) {
-        //Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
-        replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
+        Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
+        //replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
     }
 
 
