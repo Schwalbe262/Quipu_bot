@@ -181,7 +181,8 @@ timer = new (function(){ // 타이머
 
 function saveFile(file, str) {
     //var filedir = new java.io.File("/sdcard/kbot/"+ file);
-    var filedir = new java.io.File("/sdcard/ChatBot/BotData/시립"+ file);
+    //var filedir = new java.io.File("/sdcard/ChatBot/BotData/시립"+ file);
+    var filedir = new java.io.File("/sdcard/katalkbot"+ file);
     try {
         var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
         bw.write(str.toString());
