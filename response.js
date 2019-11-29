@@ -39,7 +39,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             str_GJ_2 = msg;
         }
 
-        if(flag_SG==1 && timer.end()>60*1000){
+        if(flag_SG==1 && timer.end()>30*1000){
             if(str_SG_1==str_SG_2){ // 공지가 정상적으로 공지확인방에 출력 된 경우 아무 동작 하지 않음
                 flag_SG=0
             }
