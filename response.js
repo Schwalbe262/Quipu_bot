@@ -3,17 +3,23 @@
 //=============================================================================================================================
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
+    try {
+        // test 코드
+        if (msg == "test") {
+            replier.reply("test")
+        }
 
-    // test 코드
-    if(msg=="test"){
-        replier.reply("test냥")
+
+        // eval 반응 코드
+        if (msg.indexOf(">") == 0) { // 해당 조건 만족시 eval 실행
+            //replier.reply(eval(msg).toString().encoding())
+            replier.reply(">" + new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
+        }
+
     }
-
-
-    // eval 반응 코드
-    if(msg.indexOf(">")==0){ // 해당 조건 만족시 eval 실행
-        //replier.reply(eval(msg).toString().encoding())
-        replier.reply(">"+new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
+    catch(e) {
+        //Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
+        replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
     }
 
 
@@ -126,7 +132,7 @@ Git = function() {
             msg2 += msg +"\n\n"
 
         }
-        KakaoTalk.reply("봇강의방",msg2)
+        Api.replyRoom("봇강의방",msg2)
     }
 
     return Git
@@ -135,30 +141,30 @@ Git = function() {
 
 function update() { // 깃헙 파일 -> 휴대폰 response.js 업데이트
     timer.start();
-    KakaoTalk.reply("봇강의방","updating...");
+    Api.replyRoom("봇강의방","updating...");
     Git.pull("https://github.com/Schwalbe262/Quipu_bot","/sdcard/kbot") // 반드시 이부분을 본인 링크로 바꿀 것
-    KakaoTalk.reply("봇강의방","complete");
+    Api.replyRoom("봇강의방","complete");
     var time = timer.end();
     var msg = "time : " + java.lang.String.format("%.2f",time/1000) + "sec";
-    KakaoTalk.reply("봇강의방",msg);
+    Api.replyRoom("봇강의방",msg);
     return ""
 }
 
 function reload () { // 코드 리로드
     timer.start();
     //switcher=0;
-    KakaoTalk.reply("봇강의방","리로드 시작...");
+    Api.replyRoom("봇강의방","리로드 시작...");
     wake.on();
     try{
         Api.reload();
     }catch(e){
-        KakaoTalk.reply("봇강의방",e + "\n" + e.stack);
+        Api.replyRoom("봇강의방",e + "\n" + e.stack);
     }
     wake.off();
     var time = timer.end();
-    KakaoTalk.reply("봇강의방","리로드 완료!");
+    Api.replyRoom("봇강의방","리로드 완료!");
     msg = "경과시간: " + java.lang.String.format("%.2f",time/1000) + "초";
-    KakaoTalk.reply("봇강의방",msg);
+    Api.replyRoom("봇강의방",msg);
 }
 
 timer = new (function(){ // 타이머
@@ -174,8 +180,8 @@ timer = new (function(){ // 타이머
     }})();
 
 function saveFile(file, str) {
-    //var filedir = new java.io.File("/sdcard/kbot/"+ file);
-    var filedir = new java.io.File("/sdcard/ChatBot/BotData/시립"+ file);
+    var filedir = new java.io.File("/sdcard/kbot/"+ file);
+    //var filedir = new java.io.File("/sdcard/ChatBot/BotData/시립"+ file);
     try {
         var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
         bw.write(str.toString());
