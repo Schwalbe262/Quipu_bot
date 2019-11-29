@@ -126,7 +126,7 @@ Git = function() {
             msg2 += msg +"\n\n"
 
         }
-        Api.replyRoom("봇강의방",msg2)
+        KakaoTalk.reply("봇강의방",msg2)
     }
 
     return Git
@@ -135,30 +135,30 @@ Git = function() {
 
 function update() { // 깃헙 파일 -> 휴대폰 response.js 업데이트
     timer.start();
-    Api.replyRoom("봇강의방","updating...");
+    KakaoTalk.reply("봇강의방","updating...");
     Git.pull("https://github.com/Schwalbe262/Quipu_bot","/sdcard/kbot") // 반드시 이부분을 본인 링크로 바꿀 것
-    Api.replyRoom("봇강의방","complete");
+    KakaoTalk.reply("봇강의방","complete");
     var time = timer.end();
     var msg = "time : " + java.lang.String.format("%.2f",time/1000) + "sec";
-    Api.replyRoom("봇강의방",msg);
+    KakaoTalk.reply("봇강의방",msg);
     return ""
 }
 
 function reload () { // 코드 리로드
     timer.start();
     //switcher=0;
-    Api.replyRoom("봇강의방","리로드 시작...");
+    KakaoTalk.reply("봇강의방","리로드 시작...");
     wake.on();
     try{
         Api.reload();
     }catch(e){
-        Api.replyRoom("봇강의방",e + "\n" + e.stack);
+        KakaoTalk.reply("봇강의방",e + "\n" + e.stack);
     }
     wake.off();
     var time = timer.end();
-    Api.replyRoom("봇강의방","리로드 완료!");
+    KakaoTalk.reply("봇강의방","리로드 완료!");
     msg = "경과시간: " + java.lang.String.format("%.2f",time/1000) + "초";
-    Api.replyRoom("봇강의방",msg);
+    KakaoTalk.reply("봇강의방",msg);
 }
 
 timer = new (function(){ // 타이머
