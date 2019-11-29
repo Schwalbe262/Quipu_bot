@@ -6,7 +6,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     // test 코드
     if(msg=="test"){
-        replier.reply("test")
+        replier.reply("test냥")
     }
 
 
