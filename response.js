@@ -25,19 +25,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             replier.reply(">" + new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
         }
 
-        if(msg=="고양이"){
-            replier.reply("야옹")
-        } // “고양이”라는 메시지를 받을 경우 “야옹” 출력
-        else if(msg=="강아지"){
-            replier.reply("멍멍")
-        }
-        else if(msg=="고양이"){
-            replier.reply("삐약삐약")
-        }
-        else{
-            replier.reply("꼬끼오")
-        }
-
 
 
         function blankFunc(r){}
