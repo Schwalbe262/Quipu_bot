@@ -29,8 +29,26 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
         function blankFunc(r){}
 
+        if(msg=="고양이" && sender=="노은총"){
+            replier.reply("야옹")
+        } // "노은총"이 "고양이"메시지를 보내면 "야옹"출력
 
-        //======================================== 공지방 티키타카 코드 시작 ==================================================
+        if(msg=="강아지" && room=="봇강의방"){
+            replier.reply("멍멍")
+        } // "봇강의방"에서 "강아지"메시지를 보내면 "멍멍"출력
+
+        if(msg=="병아리" || msg=="삐약이"){
+            replier.reply("삐약삐약")
+        } // "병아리" 혹은 "삐약이" 라는 메시지를 보내면 "삐약삐약"출력
+        if(room=="봇강의방"&&(msg=="어흥이"||msg=="호랑이")){
+            replier.reply("어흥")
+        }
+
+
+
+
+
+    //======================================== 공지방 티키타카 코드 시작 ==================================================
 
         if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
             str_SG_1 = msg;
@@ -52,8 +70,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 flag_SG=0
             }
             else if(str_SG_1!=str_SG_2){ // 공지가 정상적으로 출력 안된 경우
-                Api.replyRoom("시립대공지확인방",str_SG1)
-                Api.replyRoom("시립대공지확인방",str_SG2)
+                Api.replyRoom("시립대공지확인방",str_SG_1)
+                Api.replyRoom("시립대공지확인방",str_SG_2)
                 flag_SG=0
             }
         }
