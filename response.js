@@ -34,9 +34,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     //======================================== 공지방 티키타카 코드 시작 ==================================================
 
         if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
+            flag_SG = 1;
             str_SG_1 = msg;
             timer.start()
-            flag_SG = 1;
         }
         if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("보러가기 : ")>-1 && flag_SG==1 ){
             str_SG_2 = msg;
