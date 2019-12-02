@@ -28,7 +28,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
         function blankFunc(r){}
-        
+
 
 
     //======================================== 공지방 티키타카 코드 시작 ==================================================
@@ -49,10 +49,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
 
         if(flag_SG==1 && timer.end()>30*1000){
-            if(str_SG_1==str_SG_2){ // 공지가 정상적으로 공지확인방에 출력 된 경우 아무 동작 하지 않음
+            if(str_SG_1==str_GJ_1){ // 공지가 정상적으로 공지확인방에 출력 된 경우 아무 동작 하지 않음
                 flag_SG=0
             }
-            else if(str_SG_1!=str_SG_2){ // 공지가 정상적으로 출력 안된 경우
+            else if(str_SG_1!=str_GJ_1){ // 공지가 정상적으로 출력 안된 경우
                 Api.replyRoom("시립대공지확인방",str_SG_1)
                 Api.replyRoom("시립대공지확인방",str_SG_2)
                 flag_SG=0
