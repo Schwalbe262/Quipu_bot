@@ -28,24 +28,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
         function blankFunc(r){}
-
-        if(msg=="고양이" && sender=="노은총"){
-            replier.reply("야옹")
-        } // "노은총"이 "고양이"메시지를 보내면 "야옹"출력
-
-        if(msg=="강아지" && room=="봇강의방"){
-            replier.reply("멍멍")
-        } // "봇강의방"에서 "강아지"메시지를 보내면 "멍멍"출력
-
-        if(msg=="병아리" || msg=="삐약이"){
-            replier.reply("삐약삐약")
-        } // "병아리" 혹은 "삐약이" 라는 메시지를 보내면 "삐약삐약"출력
-        if(room=="봇강의방"&&(msg=="어흥이"||msg=="호랑이")){
-            replier.reply("어흥")
-        }
-
-
-
+        
 
 
     //======================================== 공지방 티키타카 코드 시작 ==================================================
