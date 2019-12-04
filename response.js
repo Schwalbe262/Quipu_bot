@@ -56,6 +56,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 Api.replyRoom("시립대공지확인방",str_SG_1)
                 Api.replyRoom("시립대공지확인방",str_SG_2)
                 flag_SG=0
+                Api.replyRoom("봇강의방","티키타카시스템 작동 완료")
             }
         }
 
