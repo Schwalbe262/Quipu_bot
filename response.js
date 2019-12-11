@@ -20,7 +20,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
 
         // eval 반응 코드
-        if (msg.indexOf(">") == 0 && room=="봇강의방") { // 해당 조건 만족시 eval 실행
+        if (msg.indexOf(">") == 0 && (room=="봇강의방"||room=="봇강의방2") { // 해당 조건 만족시 eval 실행
             //replier.reply(eval(msg).toString().encoding())
             replier.reply(">" + new String(eval(msg.substring(1))).encoding()); // 봇이 eval 응답
         }
