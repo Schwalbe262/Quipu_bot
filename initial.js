@@ -2,12 +2,17 @@ var PM=android.os.PowerManager;
 var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
 var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
 
+var admin = "봇강의방2" // 관리자 콘솔방 이름
+
 
 //=============================================================================================================================
 //===========================================   response 함수    ==============================================================
 //=============================================================================================================================
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
+
+
+
     try {
         // test 코드
         if (msg == "test") {
@@ -23,7 +28,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     }
     catch(e) {
-        Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
+        Api.replyRoom(admin, "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
         //replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
     }
 
@@ -138,7 +143,7 @@ Git = function() {
             msg2 += msg +"\n\n"
 
         }
-        Api.replyRoom("봇강의방",msg2)
+        Api.replyRoom(admin,msg2)
     }
 
     return Git
@@ -157,30 +162,30 @@ function flatten(arr) {
 
 function update() { // 깃헙 파일 -> 휴대폰 response.js 업데이트
     timer.start();
-    Api.replyRoom("봇강의방","updating...");
+    Api.replyRoom(admin,"updating...");
     Git.pull("https://github.com/Schwalbe262/Quipu_bot","/sdcard/kbot") // 반드시 이부분을 본인 링크로 바꿀 것
-    Api.replyRoom("봇강의방","complete");
+    Api.replyRoom(admin,"complete");
     var time = timer.end();
     var msg = "time : " + java.lang.String.format("%.2f",time/1000) + "sec";
-    Api.replyRoom("봇강의방",msg);
+    Api.replyRoom(admin,msg);
     return ""
 }
 
 function reload () { // 코드 리로드
     timer.start();
     //switcher=0;
-    Api.replyRoom("봇강의방","리로드 시작...");
+    Api.replyRoom(admin,"리로드 시작...");
     wake.on();
     try{
         Api.reload();
     }catch(e){
-        Api.replyRoom("봇강의방",e + "\n" + e.stack);
+        Api.replyRoom(admin,e + "\n" + e.stack);
     }
     wake.off();
     var time = timer.end();
-    Api.replyRoom("봇강의방","리로드 완료!");
+    Api.replyRoom(admin,"리로드 완료!");
     msg = "경과시간: " + java.lang.String.format("%.2f",time/1000) + "초";
-    Api.replyRoom("봇강의방",msg);
+    Api.replyRoom(admin,msg);
 }
 
 wake=(function() {
@@ -192,13 +197,13 @@ wake=(function() {
         on :function(){
             if(!wl.isHeld()){
                 wl.acquire();
-                Api.replyRoom("봇장난","cpu온");
+                Api.replyRoom(admin,"cpu온");
             }
         },
         off:function(){
             if(wl.isHeld()){
                 wl.release();
-                Api.replyRoom("봇장난","cpu오프");
+                Api.replyRoom(admin,"cpu오프");
             }
         },
         toString: function(){
