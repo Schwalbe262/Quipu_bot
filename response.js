@@ -27,7 +27,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
 
-        function blankFunc(r){}
+        function blankFunc1(r){}
+        function blankFunc2(r){}
+        function blankFunc3(r){}
+        function blankFunc4(r){}
+        function blankFunc5(r){}
 
 
 
