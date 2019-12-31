@@ -14,6 +14,33 @@ var flag_SG = ""
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
+
+        // r객체선언
+        var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
+            reply: function (str) {
+                this.replier.reply(new String(str).encoding().rmspace());
+            },
+            intervalReply: function (tag, msg, interval) {
+                var lastTime = getNum("__intervalReply__" + tag);
+                var currentTime = new Date().valueOf();
+                if (lastTime == 0 || currentTime - lastTime >= interval * 1000) {
+                    this.reply(msg);
+                    setDB("__intervalReply__" + tag, currentTime);
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            replyRoom:function(room,str){
+                var replier;
+                if((replier=ObjKeep.get("replier."+room))!=null) {
+                    ObjKeep.get("replier."+room).reply(new String(str).encoding().rmspace());
+                    return true;
+                } else return false;
+            }
+        };
+
+
         // test 코드
         if (msg == "test") {
             replier.reply("test11")
