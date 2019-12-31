@@ -40,6 +40,16 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             }
         };
 
+        blankFunc(r)
+        blankFunc1(r)
+        blankFunc2(r)
+        blankFunc3(r)
+        blankFunc4(r)
+        blankFunc5(r)
+
+
+
+
 
         // test 코드
         if (msg == "test") {
