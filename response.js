@@ -18,7 +18,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         // r객체선언
         var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
             reply: function (str) {
-                this.replier.reply(new String(str).encoding().rmspace());
+                this.replier.reply(new String(str).encoding().trim()); // rmspace에서 trim으로 수정함 (2019/12/31)
             },
             intervalReply: function (tag, msg, interval) {
                 var lastTime = getNum("__intervalReply__" + tag);
