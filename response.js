@@ -47,18 +47,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc4(r)
         blankFunc5(r)
 
-        if(msg=="고양이"){
-            r.reply("야옹")
-        } // “고양이”라는 메시지를 받을 경우 “야옹” 출력
-        else if(msg=="강아지"){
-            r.reply("멍멍")
-        }
-        else if(msg=="고양이"){
-            r.reply("삐약삐약")
-        }
-        else{
-            r.reply("꼬끼오")
-        }
 
 
 
