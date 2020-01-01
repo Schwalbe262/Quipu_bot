@@ -53,7 +53,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             count++
         }
         if(msg.indexOf("/채팅량")==0){
-            r.reply("채팅량은 "+count"회 입니다.")
+            r.reply("채팅량은 "+count+"회 입니다.")
         }
 
 
