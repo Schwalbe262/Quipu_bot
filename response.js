@@ -12,6 +12,7 @@ var str_GJ_1 = ""
 var str_GJ_2 = ""
 var flag_SG = ""
 var start = 1
+var switcher = 0;
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
