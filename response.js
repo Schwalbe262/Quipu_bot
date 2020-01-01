@@ -54,14 +54,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc4(r)
         blankFunc5(r)
 
-        var time1 = 0
-        var time2 = 0
         if(msg=="/타이머시작"){
-            time1 = new Date()
+            var time1 = new Date()
             r.reply("타이머를 시작합니다.")
         }
         if(msg=="/타이머종료"){
-            time2 = new Date()
+            var time2 = new Date()
             r.reply( ((time2-time1)/1000) + "초 경과되었습니다.")
         }
 
