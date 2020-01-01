@@ -338,6 +338,9 @@ function saveFile(file, str) {
 clock = new java.lang.Thread(new java.lang.Runnable(){
     run:function(){
         while(1){
+            if(switcher == 0){
+                break;
+            }
             java.lang.Thread.sleep(1000)
             Api.replyRoom("봇강의방","째깍")
         }
