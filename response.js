@@ -337,10 +337,10 @@ function saveFile(file, str) {
 
 clock = new java.lang.Thread(new java.lang.Runnable(){
     run:function(){
-
-        java.lang.Thread.sleep(10000)
-        Api.replyRoom("봇강의방","째깍")
-
+        while(1){
+            java.lang.Thread.sleep(10000)
+            Api.replyRoom("봇강의방","째깍")
+        }
     }
 }, "clock1");
 
