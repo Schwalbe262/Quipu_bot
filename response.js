@@ -57,10 +57,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
         if(msg=="/타이머시작"){
             var time1 = new Date()
+            r.reply("타이머를 시작합니다.")
         }
         if(msg=="/타이머종료"){
             var time2 = new Date()
-            r.reply( ((timer2-timer1)/1000) + "초 경과되었습니다.")
+            r.reply( ((time2-timer1)/1000) + "초 경과되었습니다.")
         }
 
 
