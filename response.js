@@ -11,6 +11,7 @@ var str_SG_2 = ""
 var str_GJ_1 = ""
 var str_GJ_2 = ""
 var flag_SG = ""
+var count = 0
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
@@ -46,8 +47,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc3(r)
         blankFunc4(r)
         blankFunc5(r)
-
-        var count = 0
 
         if(room=="봇강의방"){
             count++
