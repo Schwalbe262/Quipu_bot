@@ -47,6 +47,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc4(r)
         blankFunc5(r)
 
+        var count = 0
+
+        if(room=="봇강의방"){
+            count++
+        }
+        if(msg.indexOf("/채팅량")==0){
+            r.reply("채팅량은 "+count"회 입니다.")
+        }
 
 
 
@@ -54,7 +62,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
 
-        // test 코드
+
+
+
+    // test 코드
         if (msg == "test") {
             replier.reply("test11")
         }
