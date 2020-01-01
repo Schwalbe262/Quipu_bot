@@ -59,7 +59,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             r.reply("타이머를 시작합니다.")
         }
         if(msg=="/타이머종료"){
-            r.reply( (timer.end()/1000) + "초 경과되었습니다.")
+            r.reply( Math.floor(timer.end()/1000) + "초 경과되었습니다.")
         }
 
 
