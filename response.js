@@ -47,20 +47,19 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc4(r)
         blankFunc5(r)
 
-        if(r.msg=="고양이" && r.sender=="노은총"){
+        if(msg=="고양이"){
             r.reply("야옹")
-        } // "노은총"이 "고양이"메시지를 보내면 "야옹"출력
-
-        if(r.msg=="강아지" && r.room=="봇강의방2"){
+        } // “고양이”라는 메시지를 받을 경우 “야옹” 출력
+        else if(msg=="강아지"){
             r.reply("멍멍")
-        } // "봇강의방"에서 "강아지"메시지를 보내면 "멍멍"출력
-
-        if(r.msg=="병아리" || r.msg=="삐약이"){
+        }
+        else if(msg=="고양이"){
             r.reply("삐약삐약")
-        } // "병아리" 혹은 "삐약이" 라는 메시지를 보내면 "삐약삐약"출력
-        if(r.room=="봇강의방"&&(r.msg=="어흥이"||r.msg=="호랑이")){
-            r.reply("어흥")
-        } // "어흥이" 혹은 "호랑이" 라는 메시지를 “봇강의방”에서 보내면 "어흥"출력
+        }
+        else{
+            r.reply("꼬끼오")
+        }
+
 
 
 
