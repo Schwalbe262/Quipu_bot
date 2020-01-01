@@ -12,7 +12,7 @@ var str_GJ_1 = ""
 var str_GJ_2 = ""
 var flag_SG = ""
 var start = 1
-var switcher = 0;
+var switcher = 1;
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
@@ -55,7 +55,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc5(r)
 
 
-
+        if(msg=="/타이머시작"){
+            var time1 = new Date()
+        }
+        if(msg=="/타이머종료"){
+            var time2 = new Date()
+            r.reply( ((timer2-timer1)/1000) + "초 경과되었습니다.")
+        }
 
 
 
