@@ -11,9 +11,15 @@ var str_SG_2 = ""
 var str_GJ_1 = ""
 var str_GJ_2 = ""
 var flag_SG = ""
+var start = 1
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
+
+        if(start==1){
+            var count = 0
+            start = 0
+        }
 
         // r객체선언
         var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
@@ -327,3 +333,14 @@ function saveFile(file, str) {
 //=============================================================================================================================
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
+
+
+clock = new java.lang.Thread(new java.lang.Runnable(){
+    run:function(){
+
+        java.lang.Thread.sleep(10000)
+        Api.replyRoom("봇강의방","째깍")
+
+    }
+}, "clock1");
+
