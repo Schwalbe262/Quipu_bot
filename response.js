@@ -55,12 +55,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc5(r)
 
         if(msg=="/타이머시작"){
-            var time1 = new Date()
+            timer.start()
             r.reply("타이머를 시작합니다.")
         }
         if(msg=="/타이머종료"){
-            var time2 = new Date()
-            r.reply( ((time2-time1)/1000) + "초 경과되었습니다.")
+            r.reply( (timer.end()/1000) + "초 경과되었습니다.")
         }
 
 
@@ -341,16 +340,14 @@ function saveFile(file, str) {
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
 
-
-clock = new java.lang.Thread(new java.lang.Runnable(){
-    run:function(){
-        while(1){
-            if(switcher == 0){
-                break;
-            }
-            java.lang.Thread.sleep(1000)
-            Api.replyRoom("봇강의방","째깍")
+timer = new (function(){
+    var low=new Date();
+    return {
+        start : function() {
+            low = new Date();
+        },
+        end : function() {
+            var present = new Date;
+            return present - low;
         }
-    }
-}, "clock1");
-
+    }})();
