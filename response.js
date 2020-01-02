@@ -342,11 +342,13 @@ function saveFile(file, str) {
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
 
-function calculate() {
-    sum : function (x, y) {
-        return x + y;
-    },
-    multiply : function (x, y) {
-        return x * y;
+calculate = new (function(){
+    return {
+        sum: function (x, y) {
+            return x + y;
+        },
+        multiply: function (x, y) {
+            return x * y;
+        }
     }
-}
+})();
