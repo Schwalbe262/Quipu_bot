@@ -65,6 +65,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         var test = 1;
 
 
+        if( msg.indexOf("/건물번호") == 0 ){
+        if(msg.substr(6)==19){r.reply(“19번은 정보기술관 입니다.”)}
+        else if(msg.substr(6)==20){r.reply(“20번은 법학관 입니다.”)
+        }
+
+
+
 
 
 
