@@ -356,16 +356,16 @@ function saveFile(file, str) {
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
 
-clock = new java.lang.Thread(new java.lang.Runnable(){
-    run:function(){
-        while(1){
-            if(switcher == 0){
-                break;
-            }
-            java.lang.Thread.sleep(1000)
-            Api.replyRoom("봇강의방","째깍")
+timer = new (function(){
+    var low=new Date();
+    return {
+        start : function() {
+            low = new Date();
+        },
+        end : function() {
+            var present = new Date;
+            return present - low;
         }
-    }
-}, "clock1");
+    }})();
 
 
