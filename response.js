@@ -343,10 +343,10 @@ function saveFile(file, str) {
 //=============================================================================================================================
 
 calculate = new (function(){
-    sum : function() {
+    sum : function(x,y) {
         return x+y;
     },
-    multiply : function() {
+    multiply : function(x,y) {
         return x*y;
     }
-})(x,y);
+})();
