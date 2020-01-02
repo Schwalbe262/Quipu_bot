@@ -342,10 +342,11 @@ function saveFile(file, str) {
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
 
-function current_time(){
-    var date = new Date()
-    str = ""
-    str += "현재시각은" + date.getFullYear() + "년 " + (date.getMonth()+1) + "월 " + date.getDate() +"일\n"
-    str += date.getHours() + "시 " + date.getMinutes() + "분 " + date.getSeconds() + "초 입니다."
-    Api.replyRoom("봇강의방",str)
+function calculate(x,y){
+    sum : function() {
+        return x+y
+    },
+    multiply : function() {
+        return x*y
+    }
 }
