@@ -61,6 +61,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         if(msg=="/타이머종료"){
             r.reply( (timer.end()/1000) + "초 경과되었습니다.")
         }
+        
+        var test = 1;
 
 
 
@@ -347,7 +349,6 @@ function current_time(){
     str = ""
     str += "현재시각은" + date.getFullYear() + "년 " + (date.getMonth()+1) + "월 " + date.getDate() +"일\n"
     str += date.getHours() + "시 " + date.getMinutes() + "분 " + date.getSeconds() + "초 입니다."
-    return str;
     Api.replyRoom("봇강의방",str)
 }
 
