@@ -356,17 +356,16 @@ function saveFile(file, str) {
 //==========================================   Git class 종료    ==============================================================
 //=============================================================================================================================
 
-calculate = new (function(){
-    return {
-        sum: function (x, y) {
-            return x + y;
-        },
-        multiply: function (x, y) {
-            return x * y;
-        },
-        addone: function(x) {
-            return x+1;
+clock = new java.lang.Thread(new java.lang.Runnable(){
+    run:function(){
+        while(1){
+            if(switcher == 0){
+                break;
+            }
+            java.lang.Thread.sleep(1000)
+            Api.replyRoom("봇강의방","째깍")
         }
     }
-})();
+}, "clock1");
+
 
