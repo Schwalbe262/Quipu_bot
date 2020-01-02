@@ -349,6 +349,9 @@ calculate = new (function(){
         },
         multiply: function (x, y) {
             return x * y;
+        },
+        addone: function(x) {
+            return x+1;
         }
     }
 })();
