@@ -344,9 +344,9 @@ function saveFile(file, str) {
 
 calculate = new (function(){
     sum : function() {
-        return x+y
+        return x+y;
     },
     multiply : function() {
-        return x*y
+        return x*y;
     }
 })(x,y);
