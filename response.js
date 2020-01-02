@@ -13,6 +13,7 @@ var str_GJ_2 = ""
 var flag_SG = ""
 var start = 1
 var switcher = 1;
+var count = 0
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
@@ -65,10 +66,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         var test = 1;
 
 
-        if( msg.indexOf("/건물번호") == 0 ){
-        if(msg.substr(6)==19){r.reply(“19번은 정보기술관 입니다.”)}
-        else if(msg.substr(6)==20){r.reply(“20번은 법학관 입니다.”)
+
+        if(room=="봇강의방"){
+            count++
         }
+        if(msg.indexOf("/채팅량")==0){
+            r.reply("채팅량은 "+count+"회 입니다.")
+        }
+
 
 
 
