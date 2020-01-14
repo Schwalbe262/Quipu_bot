@@ -6,6 +6,7 @@ var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.
 //===========================================   response 함수    ==============================================================
 //=============================================================================================================================
 
+//===============
 var str_SG_1 = ""
 var str_SG_2 = ""
 var str_GJ_1 = ""
@@ -14,6 +15,7 @@ var flag_SG = ""
 var start = 1
 var switcher = 1;
 var count = 0
+//================
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
@@ -55,26 +57,18 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         blankFunc4(r)
         blankFunc5(r)
 
-        if(msg=="/타이머시작"){
-            timer.start()
-            r.reply("타이머를 시작합니다.")
-        }
-        if(msg=="/타이머종료"){
-            r.reply( (timer.end()/1000) + "초 경과되었습니다.")
-        }
-
-        var test = 1;
+        // Api.replyRoom("메세지 전송 방 이름","메시지")
+        // r.reply 및 replier.reply 사용 금지
+        //==============================================================================================================
+        //==============================================작 업 영 역=====================================================
+        //==============================================================================================================
 
 
 
-        if(room=="봇강의방"){
-            count++
-        }
-        if(msg.indexOf("/채팅량")==0){
-            r.reply("채팅량은 "+Number(count)+"회 입니다.")
-        }
 
-
+        //==============================================================================================================
+        //==============================================작 업 영 역=====================================================
+        //==============================================================================================================
 
 
 
@@ -99,12 +93,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     //======================================== 공지방 티키타카 코드 시작 ==================================================
 
-        if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
+        if(room=="시립대" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
             flag_SG = 1;
             str_SG_1 = msg;
             timer.start()
         }
-        if(room=="시갤톡방" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("보러가기 : ")>-1 && flag_SG==1 ){
+        if(room=="시립대" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("보러가기 : ")>-1 && flag_SG==1 ){
             str_SG_2 = msg;
         }
         if(room=="시립대공지확인방" && sender=="시립봇" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
@@ -133,6 +127,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
     catch(e) {
         Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
+        Api.replyRoom("봇강의방2", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
         //replier.reply("Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException)
     }
 
