@@ -11,7 +11,10 @@ var str_SG_1 = ""
 var str_SG_2 = ""
 var str_GJ_1 = ""
 var str_GJ_2 = ""
+var str_GJ_1_2 = ""
+var str_GJ_2_2 = ""
 var flag_SG = ""
+var flag_SG2 = ""
 var start = 1
 var switcher = 1;
 var count = 0
@@ -107,6 +110,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         if(room=="시립대공지확인방" && sender=="시립봇" && msg.indexOf("보러가기 : ")>-1 ){
             str_GJ_2 = msg;
         }
+        if(room=="시립대공지확인방2" && sender=="시립봇" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
+            str_GJ_1_2 = msg;
+        }
+        if(room=="시립대공지확인방2" && sender=="시립봇" && msg.indexOf("보러가기 : ")>-1 ){
+            str_GJ_2_2 = msg;
+        }
 
         if(flag_SG==1 && timer.end()>60*1000){
             if(str_SG_1==str_GJ_1){ // 공지가 정상적으로 공지확인방에 출력 된 경우 아무 동작 하지 않음
@@ -117,6 +126,18 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 Api.replyRoom("시립대공지확인방",str_SG_2)
                 flag_SG=0
                 Api.replyRoom("봇강의방","티키타카시스템 작동 완료")
+            }
+        }
+
+        if(flag_SG==1 && timer.end()>60*1000){
+            if(str_SG_1==str_GJ_1_2){ // 공지가 정상적으로 공지확인방에 출력 된 경우 아무 동작 하지 않음
+                flag_SG2=0
+            }
+            else if(str_SG_1!=str_GJ_1_2){ // 공지가 정상적으로 출력 안된 경우
+                Api.replyRoom("시립대공지확인방2",str_SG_1)
+                Api.replyRoom("시립대공지확인방2",str_SG_2)
+                flag_SG2=0
+                Api.replyRoom("봇강의방","티키타카시스템2 작동 완료")
             }
         }
 
