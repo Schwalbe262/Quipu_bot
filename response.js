@@ -208,8 +208,8 @@ function get_authroization_header(){
     return get_authorization_prefix() + "-" + get_authorization_suffix();
 }
 
-function nyamsconn(r){
-    var userId = String(msg.substr(6));
+function nyamsconn(id){
+    var userId = String(id);
     var A = "android/8.7.9/ko";
     var Auth = get_authroization_header();
     var info = printObject(JSON.parse(org.jsoup.Jsoup.connect("http://katalk.kakao.com/android/friends/add/" + userId + ".json").ignoreContentType(true).header("Authorization", Auth).header("A", "android/8.7.9/ko").get().text()).friend).trim();
