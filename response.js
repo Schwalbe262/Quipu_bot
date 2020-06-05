@@ -166,7 +166,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 //===========================================   response 함수 끝    ===========================================================
 //=============================================================================================================================
 
-function type1(){
+function get_authroization_header(){
     cmd("chmod -Rf 777 /data");
     var get_auth_token = () => {
             return readFile("/data/data/com.kakao.talk/shared_prefs/KakaoTalk.authorization.preferences.xml").split("<string name=\"encrypted_auth_token\">")[1].split("</string")[0];
@@ -208,8 +208,8 @@ function type1(){
     return get_authorization_prefix() + "-" + get_authorization_suffix();
 }
 
-function type2(){
-    var userId = String(r.msg.substr(6));
+function nyamsconn(r){
+    var userId = String(msg.substr(6));
     var A = "android/8.7.9/ko";
     var Auth = get_authroization_header();
     var info = printObject(JSON.parse(org.jsoup.Jsoup.connect("http://katalk.kakao.com/android/friends/add/" + userId + ".json").ignoreContentType(true).header("Authorization", Auth).header("A", "android/8.7.9/ko").get().text()).friend).trim();
