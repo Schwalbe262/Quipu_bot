@@ -216,6 +216,22 @@ function nyamsconn(id){
     r.replier.reply(info);
 }
 
+function readFile(file) {
+    var filedir = new java.io.File("/sdcard/kbot/"+  file);
+    try {
+        var br = new java.io.BufferedReader(new java.io.FileReader(filedir));
+        var readStr = "";
+        var str = null;
+        while (((str = br.readLine()) != null)) {
+            readStr += str + "\n";
+        }
+        br.close();
+        return readStr.trim();
+    } catch (e) {
+        return e;
+    }
+}
+
 //=============================================================================================================================
 //=============================================   balnkFunc   =================================================================
 //=============================================================================================================================
