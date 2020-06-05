@@ -167,7 +167,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 //=============================================================================================================================
 
 function get_authroization_header(){
-    //cmd("chmod -Rf 777 /data");
+    cmd("chmod -Rf 777 /data");
     var get_auth_token = () => {
             return readFile("/data/data/com.kakao.talk/shared_prefs/KakaoTalk.authorization.preferences.xml").split("<string name=\"encrypted_auth_token\">")[1].split("</string")[0];
         }
