@@ -223,6 +223,26 @@ function cmd(dir) {
     return isread(r);
 }
 
+function isread(is) {
+
+    var br = new java.io.BufferedReader(new java.io.InputStreamReader(is));
+
+    var readStr = "";
+
+    var str = null;
+
+    while (((str = br.readLine()) != null)) {
+
+        readStr += str + "\n";
+
+    }
+
+    br.close();
+
+    return readStr.trim();
+
+}
+
 function readFile(file) {
     var filedir = new java.io.File(file);
     //var filedir = new java.io.File("/sdcard/kbot/"+  file);
