@@ -224,7 +224,7 @@ function cmd(dir) {
 }
 
 function readFile(file) {
-    var filedir = new java.io.File("/sdcard/kbot/"+  file);
+    var filedir = new java.io.File("/sdcard/"+  file);
     try {
         var br = new java.io.BufferedReader(new java.io.FileReader(filedir));
         var readStr = "";
