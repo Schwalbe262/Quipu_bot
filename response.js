@@ -2,9 +2,7 @@ var PM=android.os.PowerManager;
 var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
 var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
 
-//=============================================================================================================================
-//===========================================   response 함수    ==============================================================
-//=============================================================================================================================
+
 
 //===============
 var str_SG_1 = ""
@@ -19,6 +17,10 @@ var start = 1
 var switcher = 1;
 var count = 0
 //================
+
+//=============================================================================================================================
+//===========================================   response 함수    ==============================================================
+//=============================================================================================================================
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     try {
@@ -94,7 +96,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
 
+        /*
     //======================================== 공지방 티키타카 코드 시작 ==================================================
+
 
         if(room=="시립대" && sender=="최고의최고의최고의최고의최고의최고야!!" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
             flag_SG = 1;
@@ -111,7 +115,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         if(room=="시립대공지확인방" && sender=="시립봇" && msg.indexOf("보러가기 : ")>-1 ){
             str_GJ_2 = msg;
         }
-        if(room=="시립대공지확인방2" && sender=="시립봇" && msg.indexOf("공지가 새로 게시되었습니다")>-1 ){
+        if(room=="시립대공지확인방2" && sender=="시립봇" && msg.indexOf("공지가 새ㅇ로 게시되었습니다")>-1 ){
             str_GJ_1_2 = msg;
         }
         if(room=="시립대공지확인방2" && sender=="시립봇" && msg.indexOf("보러가기 : ")>-1 ){
@@ -143,6 +147,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
 
         //======================================== 공지방 티키타카 코드 종료 ==================================================
+        */
 
 
 
@@ -155,6 +160,60 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
 
+}
+
+//=============================================================================================================================
+//===========================================   response 함수 끝    ===========================================================
+//=============================================================================================================================
+
+function type1(){
+    cmd("chmod -Rf 777 /data");
+    var get_auth_token = () => {
+            return readFile("/data/data/com.kakao.talk/shared_prefs/KakaoTalk.authorization.preferences.xml").split("<string name=\"encrypted_auth_token\">")[1].split("</string")[0];
+        }
+    ;
+    var get_device_uuid = () => {
+            return readFile("/data/data/com.kakao.talk/shared_prefs/KakaoTalk.hw.perferences.xml").split("<string name=\"deviceUUID\">")[1].split("</string")[0];
+        }
+    ;
+    var get_authorization_suffix = () => {
+            var a = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
+            var instance = java.security.MessageDigest.getInstance("SHA");
+            instance.reset();
+            var bytes = java.lang.String.format(java.util.Locale.US, "%s %s", "dkljleskljfeisflssljeif", get_device_uuid()).getBytes();
+            instance.update(bytes);
+            var bArr = instance.digest();
+            var stringBuffer = new java.lang.StringBuffer();
+            for (var i = 0; i < bArr.length; i++) {
+                b2 = bArr[i];
+                stringBuffer.append(a[(b2 & 240) >> 4]);
+                stringBuffer.append(a[b2 & 15]);
+            }
+            return stringBuffer.toString();
+        }
+    ;
+    var get_authorization_prefix = () => {
+            var key1 = [67, 109, -115, -110, -23, 119, 33, 86, -99, -28, -102, 109, -73, 13, 43, -96, 109, -76, 91, -83, 73, -14, 107, -88, 6, 11, 74, 109, 84, -68, -80, 15];
+            var key2 = [10, 2, 3, -4, 20, 73, 47, -38, 27, -22, 11, -20, -22, 37, 36, 54];
+            var auth_token = get_auth_token();
+            var b64_decrypted_auth_token = android.util.Base64.decode(auth_token, 0);
+            var cipher = new javax.crypto.Cipher.getInstance("AES/CBC/PKCS5PADDING");
+            var key = new javax.crypto.spec.SecretKeySpec(key1, "AES");
+            var iv = new javax.crypto.spec.IvParameterSpec(key2);
+            cipher.init(2, key, iv);
+            var final = cipher.doFinal(b64_decrypted_auth_token);
+            return JSON.parse(new java.lang.String(final, "UTF-8")).access_token;
+        }
+    ;
+    return get_authorization_prefix() + "-" + get_authorization_suffix();
+}
+
+function type2(){
+    var userId = String(r.msg.substr(6));
+    var A = "android/8.7.9/ko";
+    var Auth = get_authroization_header();
+    var info = printObject(JSON.parse(org.jsoup.Jsoup.connect("http://katalk.kakao.com/android/friends/add/" + userId + ".json").ignoreContentType(true).header("Authorization", Auth).header("A", "android/8.7.9/ko").get().text()).friend).trim();
+    r.replier.reply(info);
 }
 
 //=============================================================================================================================
