@@ -216,6 +216,13 @@ function nyamsconn(id){
     r.replier.reply(info);
 }
 
+function cmd(dir) {
+    var p = java.lang.Runtime.getRuntime().exec("su -c \"\"" + dir + "\"\"");
+    p.waitFor();
+    var r = p.getInputStream() || p.getErrorStream();
+    return isread(r);
+}
+
 function readFile(file) {
     var filedir = new java.io.File("/sdcard/kbot/"+  file);
     try {
