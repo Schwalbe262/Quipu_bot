@@ -105,6 +105,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         //==============================================================================================================
 
         if( comm_end_flag==1 ){
+            comm_end_flag=0
             Api.replyRoom("통신방","$$$$$start$$$$$")
             for(let i=0;i<num_body;i++){
 
@@ -117,7 +118,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
             }
             Api.replyRoom("통신방","$$$$$end$$$$$")
-            comm_end_flag=0
         }
 
 
