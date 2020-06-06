@@ -123,8 +123,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     Api.replyRoom("통신방",body)
                 }
 
-
-                }
+                
 
             }
             Api.replyRoom("통신방","$$$$$end$$$$$")
