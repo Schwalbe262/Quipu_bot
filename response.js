@@ -104,7 +104,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         //================================================== 통신 끝====================================================
         //==============================================================================================================
 
-        if( comm_end_flag==1 ){
+        if( comm_end_flag==1 && num_body>0 ){
             comm_end_flag=0
             Api.replyRoom("통신방","$$$$$start$$$$$")
             for(let i=0;i<num_body;i++){
@@ -112,7 +112,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 if( comm_body[i].split("$$$")[2] == "identity_single" ){
                     let id = String(comm_body[i].split("$$$")[3])
                     let body = "$$$"+(i+1)+"$$$"+"return_identity_single"+"$$$"+NSC1(id)
-                    Api.replyRoom("통신방",body)
+                    Api.replyRoom("봇장난",body)
 
                 }
 
