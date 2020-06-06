@@ -92,10 +92,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             comm_flag = 1
             comm_body = [];
         }
-        if( room=="통신방" && comm_flag == 1 && msg.indexOf("$$$")==0 && msg!="$$$$$end$$$$$"){ // 통신 내용 수신
+        else if( room=="통신방" && comm_flag == 1 && msg.indexOf("$$$")==0 && msg!="$$$$$end$$$$$"){ // 통신 내용 수신
             comm_body[Number(msg.split("$$$")[1])-1] = msg
         }
-        if( room=="통신방" && msg=="$$$$$end$$$$$" ){ // 통신 종료 코드
+        else if( room=="통신방" && msg=="$$$$$end$$$$$" ){ // 통신 종료 코드
             comm_flag = 0
             comm_end_flag = 1
             num_body = comm_body.length
