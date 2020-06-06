@@ -117,7 +117,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
             }
             Api.replyRoom("통신방","$$$$$stop$$$$$")
-            comm_end_flag==0
+            comm_end_flag=0
         }
 
 
