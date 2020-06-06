@@ -111,7 +111,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
                 if( comm_body[i].split("$$$")[2] == "identity_single" ){
                     let id = String(comm_body[i].split("$$$")[3])
-                    let body = "$$$"+(i+1)+"$$$"+"return"+"$$$"+NSC1(id)
+                    let body = "$$$"+(i+1)+"$$$"+"return_identity_single"+"$$$"+NSC1(id)
                     Api.replyRoom("통신방",body)
 
                 }
