@@ -118,10 +118,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 }
                 if( comm_body[i].split("$$$")[3] == "identity_multy" ){
                     for(let j=0;j<num_body;j++){
-                        let nickName = String(comm_body[j].split("$$$")[4]).split("$%$")[0]
-                        let id = String(comm_body[j].split("$$$")[4]).split("$%$")[1]
-                        let body = "$$$"+(j+1)+"$$$"+comm_body[j].split("$$$")[2]+"$$$"+"return_identity_multi"+"$$$"+nickName+"$%$"+NSC1(id)
-                        Api.replyRoom("통신방",body)
+                        try{
+                            let nickName = String(comm_body[j].split("$$$")[4]).split("$%$")[0]
+                            let id = String(comm_body[j].split("$$$")[4]).split("$%$")[1]
+                            let body = "$$$"+(j+1)+"$$$"+comm_body[j].split("$$$")[2]+"$$$"+"return_identity_multi"+"$$$"+nickName+"$%$"+NSC1(id)
+                            Api.replyRoom("통신방",body)
+                        }
+                        catch(e){
+                        }
+
                     }
 
 
