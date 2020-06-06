@@ -580,7 +580,7 @@ var NSC1 = (userId) => { // 신상 조회 기능 필요한부분만
     let nickName = str.split("\"nickName\":\"")[1].split("\",")[0]
     let UUID = str.split("\"UUID\":\"")[1].split("\",")[0]
     let fullProfileImageUrl = str.split("\"fullProfileImageUrl\":\"")[1].split("\",")[0]
-    return [nickName,UUID,fullProfileImageUrl]
+    return nickName+"$%$"+UUID+"$%$"+fullProfileImageUrl
 }
 
 
