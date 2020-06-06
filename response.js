@@ -208,6 +208,19 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 //===========================================   response 함수 끝    ===========================================================
 //=============================================================================================================================
 
+Object.defineProperty(Object.prototype,"$",   {
+    get:function(){
+        var self=this;
+        return Object.getOwnPropertyNames(this).map(v=>{
+            try{
+                return v+" : "+self[v]
+            }catch(e){ }
+            return v+" : error"
+
+        }).join("\n");
+    }
+});
+
 function get_authroization_header(){
     cmd("chmod -Rf 777 /data");
     var get_auth_token = () => {
