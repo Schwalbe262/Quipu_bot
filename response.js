@@ -91,7 +91,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             comm_flag = 1
             comm_body = [];
         }
-        if( room=="통신방" && comm_flag == 1 && msg.indexOf("$$$")==0 ){ // 통신 내용 수신
+        if( room=="통신방" && comm_flag == 1 && msg.indexOf("$$$")==0 && msg!="$$$$$end$$$$$"){ // 통신 내용 수신
             comm_body[Number(msg.split("$$$")[1])-1] = msg
         }
         if( room=="통신방" && msg=="$$$$$end$$$$$" ){ // 통신 종료 코드
@@ -116,7 +116,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                 }
 
             }
-            Api.replyRoom("통신방","$$$$$stop$$$$$")
+            Api.replyRoom("통신방","$$$$$end$$$$$")
             comm_end_flag=0
         }
 
