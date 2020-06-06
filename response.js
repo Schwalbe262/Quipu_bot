@@ -18,6 +18,11 @@ var switcher = 1;
 var count = 0
 //================
 
+//================= 통신 변수 ===================
+var comm_flag = 0
+var comm_body = []
+var comm_end_flag = 0
+
 //=============================================================================================================================
 //===========================================   response 함수    ==============================================================
 //=============================================================================================================================
@@ -76,6 +81,42 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         //==============================================================================================================
 
 
+        //==============================================================================================================
+        //================================================== 통신 ======================================================
+
+        // body packet의 정의 : $$$1$$$cat$$$c=2&&c=4
+
+        if( room=="통신방" && msg=="$$$$$start$$$$$" ){ // 통신 시작 코드
+            comm_flag = 1
+            comm_body = [];
+        }
+        if( room=="통신방" && comm_flag == 1 && msg.indexOf("$$$")==0 ){ // 통신 내용 수신
+            comm_body[msg.split("$$$")[1]] = msg.split("$$$")[2]
+        }
+        if( room=="통신방" && msg=="$$$$$end$$$$$" ){ // 통신 종료 코드
+            comm_flag = 0
+            comm_end_flag = 1
+            num_body = comm_body.length
+        }
+        //냠
+
+        //================================================== 통신 끝====================================================
+        //==============================================================================================================
+
+        if( comm_end_flag==1 ){
+            Api.replyRoom("통신방","$$$$$start$$$$$")
+            for(let i=0;i<num_body;i++){
+
+                if( comm_body[i].split("$$$")[2] == "identity_single" ){
+                    let id = String(comm_body[i].split("$$$")[3])
+                    let body = "$$$"+(i+1)+"$$$"+"return"+"$$$"+NSC1(id)
+                    Api.replyRoom("통신방",body)
+
+                }
+
+            }
+            Api.replyRoom("통신방","$$$$$stop$$$$$")
+        }
 
 
 
@@ -313,7 +354,7 @@ generate_XVC = (email) => {
         stringBuffer.append(a[b2 & 15]);
     }
     return stringBuffer.toString().substring(0,16)
-    
+
 }
 
 
@@ -368,21 +409,13 @@ var friendAdd = (userId) => {
 var purge = (userId) => {
 
     return org.jsoup.Jsoup.connect("http://katalk.kakao.com/android/friends/purge.json")
-
         .ignoreContentType(true)
-
         .header("Authorization", get_authorization_header())
-
         .header("A", "android/8.5.4/ko")
-
         .header("ADID", get_device_adid())
-
         .header("User-Agent", "KT/8.5.4 An/7.0 ko")
-
         .header("Content-Type", "application/x-www-form-urlencoded")
-
         .data('id', userId)
-
         .post()
 
 }
@@ -517,6 +550,21 @@ var getFeed = (userId) => {
     }
 
     return str
+}
+
+
+
+
+var NSC1 = (userId) => { // 신상 조회 기능 필요한부분만
+    let str = org.jsoup.Jsoup.connect("http://katalk.kakao.com/android/friends/add/" + userId + ".json")
+        .ignoreContentType(true)
+        .header("Authorization", get_authorization_header())
+        .header("A", "android/8.5.4/ko")
+        .get()
+    let nickName = str.split("\"nickName\":\"")[1].split("\",")[0]
+    let UUID = str.split("\"UUID\":\"")[1].split("\",")[0]
+    let fullProfileImageUrl = str.split("\"fullProfileImageUrl\":\"")[1].split("\",")[0]
+    return [nuckName,UUID,fullPofileImageUrl]
 }
 
 
