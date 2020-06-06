@@ -110,31 +110,23 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             Api.replyRoom("통신방","$$$$$start$$$$$")
             for(let i=0;i<num_body;i++){
 
-                if( comm_body[i].split("$$$")[3] == "identity_single" ){
-                    try{
-                    let id = String(comm_body[i].split("$$$")[4])
-                    let body = "$$$"+(i+1)+"$$$"+comm_body[i].split("$$$")[2]+"$$$"+"return_identity_single"+"$$$"+NSC1(id)
-                    Api.replyRoom("통신방",body)
+                try{
+                    if( comm_body[i].split("$$$")[3] == "identity_single" ){
+                        let id = String(comm_body[i].split("$$$")[4])
+                        let body = "$$$"+(i+1)+"$$$"+comm_body[i].split("$$$")[2]+"$$$"+"return_identity_single"+"$$$"+NSC1(id)
+                        Api.replyRoom("통신방",body)
                     }
-                    catch(e){
-                        Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
-                    }
-                }
-                if( comm_body[i].split("$$$")[3] == "identity_multy" ){
-                    try{
+                    if( comm_body[i].split("$$$")[3] == "identity_multy" ){
                         let nickName = String(comm_body[i].split("$$$")[4]).split("$%$")[0]
                         let id = String(comm_body[i].split("$$$")[4]).split("$%$")[1]
                         let body = "$$$"+(i+1)+"$$$"+comm_body[i].split("$$$")[2]+"$$$"+"return_identity_multi"+"$$$"+nickName+"$%$"+NSC1(id)
                         Api.replyRoom("통신방",body)
-                        java.lang.Thread.sleep(300)
+                        java.lang.Thread.sleep(500)
                     }
-                    catch(e){
-                        Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
-                    }
-
                 }
-
-
+                catch(e){
+                    Api.replyRoom("봇강의방", "Response Error\n" + e + "\n" + e.stack + "\n" + e.rhinoException);
+                }
 
             }
             Api.replyRoom("통신방","$$$$$end$$$$$")
