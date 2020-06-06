@@ -23,6 +23,7 @@ var comm_flag = 0
 var comm_body = []
 var comm_end_flag = 0
 var num_body
+var comm_place
 
 //=============================================================================================================================
 //===========================================   response 함수    ==============================================================
@@ -87,7 +88,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
         // body packet의 정의 : $$$1$$$cat$$$c=2&&c=4
 
-        if( room=="통신방" && msg=="$$$$$start$$$$$" && sender!="시립봇(sub"){ // 통신 시작 코드
+        if( room=="통신방" && msg==("$$$$$start$$$$$") && sender!="시립봇(sub"){ // 통신 시작 코드
             comm_flag = 1
             comm_body = [];
         }
@@ -109,9 +110,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             Api.replyRoom("통신방","$$$$$start$$$$$")
             for(let i=0;i<num_body;i++){
 
-                if( comm_body[i].split("$$$")[2] == "identity_single" ){
-                    let id = String(comm_body[i].split("$$$")[3])
-                    let body = "$$$"+(i+1)+"$$$"+"return_identity_single"+"$$$"+NSC1(id)
+                if( comm_body[i].split("$$$")[3] == "identity_single" ){
+                    let id = String(comm_body[i].split("$$$")[4])
+                    let body = "$$$"+(i+1)+"$$$"+comm_body[i].split("$$$")[2]+"$$$"+"return_identity_single"+"$$$"+NSC1(id)
                     Api.replyRoom("통신방",body)
 
                 }
