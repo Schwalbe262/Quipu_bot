@@ -87,7 +87,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
         // body packet의 정의 : $$$1$$$cat$$$c=2&&c=4
 
-        if( room=="통신방" && msg=="$$$$$start$$$$$" ){ // 통신 시작 코드
+        if( room=="통신방" && msg=="$$$$$start$$$$$" && sender!="시립봇(sub"){ // 통신 시작 코드
             comm_flag = 1
             comm_body = [];
         }
@@ -580,7 +580,7 @@ var NSC1 = (userId) => { // 신상 조회 기능 필요한부분만
     let nickName = str.split("\"nickName\":\"")[1].split("\",")[0]
     let UUID = str.split("\"UUID\":\"")[1].split("\",")[0]
     let fullProfileImageUrl = str.split("\"fullProfileImageUrl\":\"")[1].split("\",")[0]
-    return [nickName,UUID,fullPofileImageUrl]
+    return [nickName,UUID,fullProfileImageUrl]
 }
 
 
