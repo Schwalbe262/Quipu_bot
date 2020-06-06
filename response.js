@@ -575,6 +575,7 @@ var NSC1 = (userId) => { // 신상 조회 기능 필요한부분만
         .header("Authorization", get_authorization_header())
         .header("A", "android/8.5.4/ko")
         .get()
+    str = String(str)
     let nickName = str.split("\"nickName\":\"")[1].split("\",")[0]
     let UUID = str.split("\"UUID\":\"")[1].split("\",")[0]
     let fullProfileImageUrl = str.split("\"fullProfileImageUrl\":\"")[1].split("\",")[0]
