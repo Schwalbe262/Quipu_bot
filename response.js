@@ -4,7 +4,9 @@
 
 //sendKalingImage(방이름,이미지주소,"http://sirip.kr",설명,버튼,너비,높이)
 
+Log.d("11")
 const D=require("DBManager.js")
+Log.d("22")
 var PM=android.os.PowerManager;
 var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
 var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
