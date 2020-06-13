@@ -20,18 +20,19 @@ var start = 1;
 var cacheModule={}
 Log.d("1")
 function require(src,force){
+    Log.d("2")
     if(!force && cacheModule[src]!=undefined) return cacheModule[src];
     else{
         var module = {}
-        Log.d("2")
-        eval(readFile("node_modules/"+src))
         Log.d("3")
-        cacheModule[src] = module.exports;
+        eval(readFile("node_modules/"+src))
         Log.d("4")
+        cacheModule[src] = module.exports;
+        Log.d("5")
         return module.exports
     }
 }
-Log.d("5")
+Log.d("6")
 
 
 
