@@ -15,6 +15,17 @@ UngAngMan = "God"
 
 var start = 1;
 
+var cacheModule={}
+function require(src,force){
+    if(!force && cacheModule[src]!=undefined) return cacheModule[src];
+    else{
+        var module = {}
+        eval(readFile("node_modules/"+src))
+        cacheModule[src] = module.exports;
+        return module.exports
+    }
+}
+
 
 
 
