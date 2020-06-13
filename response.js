@@ -3,7 +3,7 @@
 // 사용가능한 함수 확인 D.help()
 
 //sendKalingImage(방이름,이미지주소,"http://sirip.kr",설명,버튼,너비,높이)
-
+var cacheModule={}
 Log.d("11")
 const D=require("DBManager.js")
 Log.d("22")
@@ -17,7 +17,7 @@ UngAngMan = "God"
 
 var start = 1;
 
-var cacheModule={}
+
 Log.d("1")
 function require(src,force){
     Log.d("2")
