@@ -87,6 +87,8 @@ function getDateText() {
 
 /************************************/
 
+var myDB = android.database.sqlite.SQLiteDatabase.openDatabase("/sdcard/katalkbot/DB", null, android.database.sqlite.SQLiteDatabase.CREATE_IF_NECESSARY);
+
 var KOSPI_reference = getDB("KOSPI_reference")
 var NASDAQ_reference = getDB("NASDAQ_reference")
 var KOSPI_log = getDB("KOSPI_log")
@@ -113,7 +115,7 @@ var dayV=0;
 var dayV_DAR=0;
 var sms_cnt=0;
 
-var myDB = android.database.sqlite.SQLiteDatabase.openDatabase("/sdcard/katalkbot/DB", null, android.database.sqlite.SQLiteDatabase.CREATE_IF_NECESSARY);
+
 //var myDB = android.database.sqlite.SQLiteDatabase.openDatabase("/sdcard/katalkbot/DB", null, android.database.sqlite.SQLiteDatabase.CREATE_IF_NECESSARY);
 var TMI = 0; // TMI 분당 경고기용 변수
 var Emergency = 0;
