@@ -7,7 +7,8 @@ var cacheModule={}
 function require(src,force){
     if(!force && cacheModule[src]!=undefined) return cacheModule[src];
     else{
-        var module = {}
+        var module = {exports:{}}
+        var exports=module.exports
         eval(readFile("node_modules/"+src))
         cacheModule[src] = module.exports;
         return module.exports
