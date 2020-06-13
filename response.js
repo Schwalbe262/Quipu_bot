@@ -8353,6 +8353,7 @@ thread_1 = new java.lang.Thread(new java.lang.Runnable(){
 }, "kbot_thread_1");
 
 
+/*
 clock = new java.lang.Thread(new java.lang.Runnable(){
     run:function(){
         switcher = 1
@@ -8364,27 +8365,6 @@ clock = new java.lang.Thread(new java.lang.Runnable(){
                 if(switcher == 0){
                     break
                 }
-                /*
-				try{ // clock_minute 꺼졌을시 재시동
-					if(clock_minute.isAlive()==false && updateStart==0 ){
-						clock_minute.start()
-						Api.replyRoom("봇장난","clock_minute 스레드 재시동")
-					}
-				}
-				catch(e){
-					Api.replyRoom("봇장난","clock-1 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
-				}
-				try{ // clock_3minute 꺼졌을시 재시동
-					if(clock_3minute.isAlive()==false && updateStart==0 ){
-						clock_3minute.start()
-						Api.replyRoom("봇장난","clock_3minute 스레드 재시동")
-					}
-				}
-				catch(e){
-					Api.replyRoom("봇장난","clock-2 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
-				}
-				*/
-
                 try{
                     var date = new Date();
                     if(date.getHours()>8 && date.getHours()<17 && (date.getDay()>0&&date.getDay()<6) ){
@@ -8501,6 +8481,9 @@ clock = new java.lang.Thread(new java.lang.Runnable(){
         }
     }
 }, "kbot_thread_clock");
+*/
+
+
 
 clock_minute = new java.lang.Thread(new java.lang.Runnable({
     run:function(){
