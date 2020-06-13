@@ -4,9 +4,18 @@
 
 //sendKalingImage(방이름,이미지주소,"http://sirip.kr",설명,버튼,너비,높이)
 var cacheModule={}
-Log.d("11")
+function require(src,force){
+    if(!force && cacheModule[src]!=undefined) return cacheModule[src];
+    else{
+        var module = {}
+        eval(readFile("node_modules/"+src))
+        cacheModule[src] = module.exports;
+        return module.exports
+    }
+}
+
 const D=require("DBManager.js")
-Log.d("22")
+
 var PM=android.os.PowerManager;
 var pm =Api.getContext().getSystemService(android.content.Context.POWER_SERVICE);
 var wl = pm.newWakeLock(PM.SCREEN_BRIGHT_WAKE_LOCK|PM.ACQUIRE_CAUSES_WAKEUP |PM.ON_AFTER_RELEASE,"FAIL");
@@ -17,22 +26,6 @@ UngAngMan = "God"
 
 var start = 1;
 
-
-Log.d("1")
-function require(src,force){
-    Log.d("2")
-    if(!force && cacheModule[src]!=undefined) return cacheModule[src];
-    else{
-        var module = {}
-        Log.d("3")
-        eval(readFile("node_modules/"+src))
-        Log.d("4")
-        cacheModule[src] = module.exports;
-        Log.d("5")
-        return module.exports
-    }
-}
-Log.d("6")
 
 
 
@@ -8353,7 +8346,7 @@ thread_1 = new java.lang.Thread(new java.lang.Runnable(){
 }, "kbot_thread_1");
 
 
-/*
+
 clock = new java.lang.Thread(new java.lang.Runnable(){
     run:function(){
         switcher = 1
@@ -8481,7 +8474,7 @@ clock = new java.lang.Thread(new java.lang.Runnable(){
         }
     }
 }, "kbot_thread_clock");
-*/
+
 
 
 
