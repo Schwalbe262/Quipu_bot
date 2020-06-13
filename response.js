@@ -114,6 +114,7 @@ var dayV_DAR=0;
 var sms_cnt=0;
 
 var myDB = android.database.sqlite.SQLiteDatabase.openDatabase("/sdcard/katalkbot/DB", null, android.database.sqlite.SQLiteDatabase.CREATE_IF_NECESSARY);
+//var myDB = android.database.sqlite.SQLiteDatabase.openDatabase("/sdcard/katalkbot/DB", null, android.database.sqlite.SQLiteDatabase.CREATE_IF_NECESSARY);
 var TMI = 0; // TMI 분당 경고기용 변수
 var Emergency = 0;
 var dream_status = "normal";
@@ -8072,12 +8073,14 @@ function update() {
     var msg = "time : " + java.lang.String.format("%.2f",time/1000) + "sec";
     Api.replyRoom("봇장난",msg);
 
+    /*
     setDB("KOSPI_reference",KOSPI_reference)
     setDB("NASDAQ_reference",NASDAQ_reference)
     setDB("KOSDAQ_reference",KOSDAQ_reference)
     setDB("KOSPI_log",KOSPI_log)
     setDB("NASDAQ_log",NASDAQ_log)
     setDB("KOSDAQ_log",KOSDAQ_log)
+    */
 
 
     return ""
