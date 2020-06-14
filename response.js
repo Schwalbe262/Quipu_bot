@@ -4615,7 +4615,7 @@ function kakaoReset(){
     Kakao.init("29fbf6ec828f27d72544c39a3bb4f8d0"); // P.kakaoint자리
     Kakao.login(getDB("kakaoId"), getDB("kakaoPw"));
 }
-//kakaoReset()
+kakaoReset()
 function sendKalingImage(room, imageURL, URL, description,button,width, height){
     var kalingObj={
         "link_ver": "4.0",
