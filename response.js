@@ -514,9 +514,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
 
     var TEMP_main = 0; //반응변수
+    /*
     if(ObjKeep.get("replier."+room)==null){
         ObjKeep.keep("replier."+room,replier);
     }
+    */
     var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
         reply: function (str) {
             this.replier.reply(new String(str).encoding().rmspace());
@@ -616,10 +618,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 	*/
 
+        /*
         if(Api.getRoomList().length!=getNum("roomNumber")){ // 방 정보 입력
             setDB("roomNumber",Api.getRoomList().length)
             roomList  = Api.getRoomList().join("\n")
         }
+        */
 
         // eval 활성화코드 (비상 정지시에도 eval은 활성화)
         if(msg.indexOf(">")==0&&(room=="봇장난"||room=="노은총")&&evalON==0){
@@ -2533,6 +2537,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 //==================================================================================================================================
 //===================================      시갤톡        ===========================================================================
 //==================================================================================================================================
+
+        if(room=="폐쇄"){
+            r.reply("====폐쇄된 톡방입니다.====")
+        }
 
         if(msg=="/혼독체교정 ON"){
             setDB("hondok","ON")
