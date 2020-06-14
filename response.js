@@ -4643,12 +4643,12 @@ function sendKalingImage(room, imageURL, URL, description,button,width, height){
     };
     try{
         Kakao.send(room, kalingObj );
-        r.reply("try")
+        Api.replyRoom("봇장난","try")
     }catch(e){
         kakaoReset();
         Kakao.send(room, kalingObj );
-        r.reply(e)
-        r.reply("catch")
+        Api.replyRoom("봇장난",e)
+        Api.replyRoom("봇장난","catch")
     }
 
 }
