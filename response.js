@@ -4646,6 +4646,7 @@ function sendKalingImage(room, imageURL, URL, description,button,width, height){
     }catch(e){
         kakaoReset();
         Kakao.send(room, kalingObj );
+        r.reply(e)
     }
 
 }
