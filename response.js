@@ -8068,25 +8068,14 @@ function update() {
 	switcher=0;
 }
 */
-function update() {
+function update() { // 깃헙 파일 -> 휴대폰 response.js 업데이트
     timer.start();
     Api.replyRoom("봇장난","updating...");
-    Git.pull("https://github.com/Schwalbe262/uosgall_bot","/sdcard/katalkbot")
+    Git.pull("https://github.com/Schwalbe262/Quipu_bot","/sdcard/kbot") // 반드시 이부분을 본인 링크로 바꿀 것
     Api.replyRoom("봇장난","complete");
     var time = timer.end();
     var msg = "time : " + java.lang.String.format("%.2f",time/1000) + "sec";
     Api.replyRoom("봇장난",msg);
-
-    /*
-    setDB("KOSPI_reference",KOSPI_reference)
-    setDB("NASDAQ_reference",NASDAQ_reference)
-    setDB("KOSDAQ_reference",KOSDAQ_reference)
-    setDB("KOSPI_log",KOSPI_log)
-    setDB("NASDAQ_log",NASDAQ_log)
-    setDB("KOSDAQ_log",KOSDAQ_log)
-    */
-
-
     return ""
 }
 
